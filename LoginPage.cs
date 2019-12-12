@@ -23,11 +23,15 @@ namespace EducationAutomation
 
         private void LoginPage_Load(object sender, EventArgs e)
         {
-
+            outputResult.Visible = false;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void login_Click(object sender, EventArgs e)
         {
+            User user = new User();
+            user.setIdNo(inputUsername.Text);
+            user.setPassword(inputPassword.Text);
+            string result = DAO.login(user);
 
         }
     }

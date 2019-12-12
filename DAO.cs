@@ -23,7 +23,7 @@ namespace EducationAutomation
 
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                 sqlDataReader.Read();
-
+                //
                 if (sqlDataReader.HasRows)
                 {
                     MessageBox.Show("Ok");

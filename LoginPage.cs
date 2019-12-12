@@ -11,29 +11,24 @@ using System.Data.SqlClient;
 
 namespace EducationAutomation
 {
-    public partial class Form1 : Form
+    public partial class LoginPage : Form
     {
 
         SqlConnection sqlConnection;
 
-        public Form1()
+        public LoginPage()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void LoginPage_Load(object sender, EventArgs e)
         {
 
         }
-        
-        private void button1_Click(object sender, EventArgs e)
-        {
-            sqlConnection= DAO.openConnection();
-        }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            DAO.closeConnection(sqlConnection);
+
         }
     }
 }

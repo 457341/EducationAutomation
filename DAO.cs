@@ -26,7 +26,13 @@ namespace EducationAutomation
                 //
                 if (sqlDataReader.HasRows)
                 {
-                    MessageBox.Show("Ok");
+                    sqlDataReader.Close();
+                    sqlCommand = new SqlCommand("SELECT tTasks.name FROM tTasks WHERE tTasks.taskID = (SELECT tStaff_tTasks.taskID FROM tStaff_tTasks WHERE tStaff_tTasks.ID =@ID)", sqlConnection);
+                    sqlCommand.Parameters.AddWithValue("@ID", user.getIdNo());
+                    sqlDataReader = sqlCommand.ExecuteReader();
+                    sqlDataReader.Read();
+                    result = sqlDataReader.GetString(0);
+                    return result;
                 }
                 else
                 {

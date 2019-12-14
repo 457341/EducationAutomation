@@ -28,10 +28,20 @@ namespace EducationAutomation
 
         private void login_Click(object sender, EventArgs e)
         {
-            User user = new User();
+            User user = new User();/*
             user.setIdNo(inputUsername.Text);
-            user.setPassword(inputPassword.Text);
+            user.setPassword(inputPassword.Text);*/
+            user.setIdNo("11111111111");
+            user.setPassword("abcd");
             string result = DAO.login(user);
+            if (result == "Mudur")
+            {
+               ManagerForm managerForm =  new ManagerForm();
+            }
+            else if (result == "Mudur Yardımcısı")
+            {
+
+            }
 
         }
     }

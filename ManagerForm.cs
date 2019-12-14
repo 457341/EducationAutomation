@@ -20,11 +20,28 @@ namespace EducationAutomation
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            panelStaff.Width += 5;
-            if (panelStaff.Width == 200)
+            bool isOpen = false;
+            if (!isOpen)
             {
-                timer1.Stop();
+                panelStaff.Height += 5;
+
+                if (panelStaff.Width > 199)
+                {
+                    isOpen = true;
+                    timer1.Stop();
+                }
             }
+            else
+            {
+                panelStaff.Height -= 5;
+
+                if (panelStaff.Width < 81)
+                {
+                    isOpen = false;
+                    timer1.Stop();
+                }
+            }
+
             
         }
 

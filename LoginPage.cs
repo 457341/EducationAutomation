@@ -34,9 +34,11 @@ namespace EducationAutomation
             user.setIdNo("11111111111");
             user.setPassword("abcd");
             string result = DAO.login(user);
+
             if (result == "Mudur")
             {
-               ManagerForm managerForm =  new ManagerForm();
+                ManagerForm managerForm = new ManagerForm();
+                managerForm.Show();
             }
             else if (result == "Mudur Yardımcısı")
             {

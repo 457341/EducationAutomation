@@ -61,45 +61,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddStaff.cs">
+    <Compile Include="EducationDatebaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EducationDatebaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="view\AddStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddStaff.Designer.cs">
+    <Compile Include="view\AddStaff.Designer.cs">
       <DependentUpon>AddStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="CourseInfo.cs" />
-    <Compile Include="Course.cs" />
-    <Compile Include="DAO.cs" />
-    <Compile Include="Department.cs" />
-    <Compile Include="Enrolled.cs" />
-    <Compile Include="LoginPage.cs">
+    <Compile Include="model\CourseInfo.cs" />
+    <Compile Include="model\Course.cs" />
+    <Compile Include="controller\DAO.cs" />
+    <Compile Include="model\Department.cs" />
+    <Compile Include="model\Enrolled.cs" />
+    <Compile Include="view\LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginPage.Designer.cs">
+    <Compile Include="view\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManagerForm.cs">
+    <Compile Include="view\ManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManagerForm.Designer.cs">
+    <Compile Include="view\ManagerForm.Designer.cs">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="model\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecialPanel.cs">
+    <Compile Include="view\ShowStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ShowStaff.Designer.cs">
+      <DependentUpon>ShowStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SpecialPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Staff.cs" />
-    <Compile Include="Task.cs" />
-    <Compile Include="TaskCourse.cs" />
-    <Compile Include="User.cs" />
-    <EmbeddedResource Include="AddStaff.resx">
+    <Compile Include="model\Staff.cs" />
+    <Compile Include="model\Task.cs" />
+    <Compile Include="model\TaskCourse.cs" />
+    <Compile Include="model\User.cs" />
+    <EmbeddedResource Include="view\AddStaff.resx">
       <DependentUpon>AddStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginPage.resx">
+    <EmbeddedResource Include="view\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManagerForm.resx">
+    <EmbeddedResource Include="view\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -111,6 +122,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="view\ShowStaff.resx">
+      <DependentUpon>ShowStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="EducationDatebaseDataSet.xsc">
+      <DependentUpon>EducationDatebaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EducationDatebaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EducationDatebaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EducationDatebaseDataSet.xss">
+      <DependentUpon>EducationDatebaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,5 +170,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

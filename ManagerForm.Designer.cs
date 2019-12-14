@@ -66,7 +66,7 @@
             this.menuPanel.Controls.Add(this.panelStaff);
             this.menuPanel.Location = new System.Drawing.Point(-1, 0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(200, 645);
+            this.menuPanel.Size = new System.Drawing.Size(200, 598);
             this.menuPanel.TabIndex = 0;
             // 
             // specialPanel2
@@ -234,7 +234,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1389, 645);
+            this.ClientSize = new System.Drawing.Size(1253, 598);
             this.Controls.Add(this.menuPanel);
             this.IsMdiContainer = true;
             this.Name = "ManagerForm";

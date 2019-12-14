@@ -20,32 +20,22 @@ namespace EducationAutomation
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            bool isOpen = false;
-            if (!isOpen)
+            if (!panelStaff.isOpen)
             {
-                panelStaff.Height += 5;
-
-                if (panelStaff.Width > 199)
-                {
-                    isOpen = true;
-                    timer1.Stop();
-                }
+                panelStaff.open(this.timer1);
             }
-            else
-            {
-                panelStaff.Height -= 5;
-
-                if (panelStaff.Width < 81)
-                {
-                    isOpen = false;
-                    timer1.Stop();
-                }
-            }
-
             
+            if(panelStaff.isOpen)
+            {
+                panelStaff.close(this.timer1);
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAddStaff_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnStaffOperation_Click(object sender, EventArgs e)
         {
             timer1.Start();
         }

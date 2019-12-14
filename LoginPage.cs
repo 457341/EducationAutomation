@@ -13,9 +13,6 @@ namespace EducationAutomation
 {
     public partial class LoginPage : Form
     {
-
-        SqlConnection sqlConnection;
-
         public LoginPage()
         {
             InitializeComponent();

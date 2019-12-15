@@ -12,13 +12,17 @@ namespace EducationAutomation
         public bool isOpen = false;
         public SpecialPanel()
         {
+            if (this.Height > 60)
+            {
+                isOpen = true;
+            }
         }
         public void open(Timer timer)
         {
             if (!isOpen)
             {
                 this.Height = this.Height + 5;
-                if (this.Height == 180)
+                if (this.Height == 145)
                 {
                     isOpen = true;
                     timer.Stop();

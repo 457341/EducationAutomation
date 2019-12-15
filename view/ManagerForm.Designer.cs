@@ -42,8 +42,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panelStaff = new EducationAutomation.SpecialPanel();
-            this.btnUpdateStaff = new System.Windows.Forms.Button();
-            this.btnAddStaff = new System.Windows.Forms.Button();
+            this.btnEditStaff = new System.Windows.Forms.Button();
             this.btnShowStaff = new System.Windows.Forms.Button();
             this.btnStaffOperation = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
@@ -66,7 +65,7 @@
             this.menuPanel.Controls.Add(this.panelStaff);
             this.menuPanel.Location = new System.Drawing.Point(-1, 0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(200, 598);
+            this.menuPanel.Size = new System.Drawing.Size(200, 677);
             this.menuPanel.TabIndex = 0;
             // 
             // specialPanel2
@@ -76,9 +75,9 @@
             this.specialPanel2.Controls.Add(this.button6);
             this.specialPanel2.Controls.Add(this.button7);
             this.specialPanel2.Controls.Add(this.button8);
-            this.specialPanel2.Location = new System.Drawing.Point(3, 237);
+            this.specialPanel2.Location = new System.Drawing.Point(6, 154);
             this.specialPanel2.Name = "specialPanel2";
-            this.specialPanel2.Size = new System.Drawing.Size(190, 60);
+            this.specialPanel2.Size = new System.Drawing.Size(190, 180);
             this.specialPanel2.TabIndex = 4;
             // 
             // button5
@@ -178,34 +177,23 @@
             // panelStaff
             // 
             this.panelStaff.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panelStaff.Controls.Add(this.btnUpdateStaff);
-            this.panelStaff.Controls.Add(this.btnAddStaff);
+            this.panelStaff.Controls.Add(this.btnEditStaff);
             this.panelStaff.Controls.Add(this.btnShowStaff);
             this.panelStaff.Controls.Add(this.btnStaffOperation);
             this.panelStaff.Location = new System.Drawing.Point(3, 3);
             this.panelStaff.Name = "panelStaff";
-            this.panelStaff.Size = new System.Drawing.Size(190, 180);
+            this.panelStaff.Size = new System.Drawing.Size(190, 145);
             this.panelStaff.TabIndex = 0;
             // 
-            // btnUpdateStaff
+            // btnEditStaff
             // 
-            this.btnUpdateStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateStaff.Location = new System.Drawing.Point(47, 141);
-            this.btnUpdateStaff.Name = "btnUpdateStaff";
-            this.btnUpdateStaff.Size = new System.Drawing.Size(140, 35);
-            this.btnUpdateStaff.TabIndex = 3;
-            this.btnUpdateStaff.Text = "Update Staff";
-            this.btnUpdateStaff.UseVisualStyleBackColor = true;
-            // 
-            // btnAddStaff
-            // 
-            this.btnAddStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddStaff.Location = new System.Drawing.Point(47, 100);
-            this.btnAddStaff.Name = "btnAddStaff";
-            this.btnAddStaff.Size = new System.Drawing.Size(140, 35);
-            this.btnAddStaff.TabIndex = 2;
-            this.btnAddStaff.Text = "Add Staff";
-            this.btnAddStaff.UseVisualStyleBackColor = true;
+            this.btnEditStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditStaff.Location = new System.Drawing.Point(47, 100);
+            this.btnEditStaff.Name = "btnEditStaff";
+            this.btnEditStaff.Size = new System.Drawing.Size(140, 35);
+            this.btnEditStaff.TabIndex = 3;
+            this.btnEditStaff.Text = "Edit Staff";
+            this.btnEditStaff.UseVisualStyleBackColor = true;
             // 
             // btnShowStaff
             // 
@@ -232,13 +220,14 @@
             // 
             // ManagerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1253, 598);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(989, 677);
             this.Controls.Add(this.menuPanel);
             this.IsMdiContainer = true;
             this.Name = "ManagerForm";
             this.Text = "ManagerForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuPanel.ResumeLayout(false);
             this.specialPanel2.ResumeLayout(false);
             this.specialPanel1.ResumeLayout(false);
@@ -250,8 +239,7 @@
         #endregion
         private System.Windows.Forms.Timer timer1;
         private EducationAutomation.SpecialPanel panelStaff;
-        private System.Windows.Forms.Button btnUpdateStaff;
-        private System.Windows.Forms.Button btnAddStaff;
+        private System.Windows.Forms.Button btnEditStaff;
         private System.Windows.Forms.Button btnShowStaff;
         private System.Windows.Forms.Button btnStaffOperation;
         private System.Windows.Forms.Panel menuPanel;

@@ -101,6 +101,11 @@ namespace EducationAutomation
             //return null;
         }
 
+        public static void addStaff(Staff staff)
+        {
+
+        }
+
         //Alttakiler veritabanına bağlanmakiçin kısa yollar
         public static SqlConnection openConnection()
         {

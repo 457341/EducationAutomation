@@ -8,13 +8,13 @@ namespace EducationAutomation
 {
     class Staff
 	{
+		private string ID;
+		private int educationLevelID;
 		private int departmentID;
 		private int taskID;
-		private string ID;
 		private string name;
 		private string surname;
 		private string date;
-		private string educationLevel;
 
 		public string getID()
 		{
@@ -72,13 +72,13 @@ namespace EducationAutomation
 		{
 			this.ID = ID;
 		}
-		public string getEducationLevel()
+		public int getEducationLevelID()
 		{
-			return this.educationLevel;
+			return this.educationLevelID;
 		}
-		public void setEducationLevel(string educationLevel)
+		public void setEducationLevelID(int educationLevelID)
 		{
-			this.educationLevel = educationLevel;
+			this.educationLevelID = educationLevelID;
 		}
 	}
 }

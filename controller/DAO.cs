@@ -54,31 +54,51 @@ namespace EducationAutomation
             return null;
         }
 
-        public static DataSet listStaff()
+        public static DataSet listStaff(string staffID = "", string staffName = "", string staffSurname ="" )
         {
             DataSet dataSet = new DataSet();
             SqlConnection sqlConnection = openConnection();
-            try
-            {
-                SqlCommand sqlCommand = new SqlCommand("" +
-                    "SELECT tStaff.ID,(tStaff.name+' '+tStaff.surname) as 'name surname',tStaff.startDate,tDepartments.name,tTasks.name,tEducationLevel.name " +
-                    "FROM tStaff,tStaff_tDepartments,tDepartments,tStaff_tTasks,tTasks,tStaff_tEducationLevel,tEducationLevel " +
-                    "WHERE tStaff.ID = tStaff_tDepartments.ID and tStaff_tDepartments.departmentID = tDepartments.departmentID and " +
+
+            string sqlCommandSELECT = "tStaff.ID as 'Identification number',(tStaff.name+' '+UPPER(tStaff.surname)) as 'name surname',tStaff.startDate as 'Start Date',tDepartments.name as 'Deparment Name',tTasks.name 'Task Name',tEducationLevel.name 'Education' ";
+            string sqlCommandFROM = "tStaff,tStaff_tDepartments,tDepartments,tStaff_tTasks,tTasks,tStaff_tEducationLevel,tEducationLevel ";
+            string sqlCommandWHERE = "tStaff.ID = tStaff_tDepartments.ID and tStaff_tDepartments.departmentID = tDepartments.departmentID and " +
                     "tStaff.ID = tStaff_tTasks.ID and tStaff_tTasks.taskID = tTasks.taskID and " +
                     "tStaff.ID = tStaff_tEducationLevel.ID and tStaff_tEducationLevel.EducationLevelID = tEducationLevel.EducationLevelID" +
-                    "");
+                     "";
+            if (staffID != "")
+            {
+                sqlCommandWHERE = " tStaff.ID LIKE '%" + staffID + "%' and " + sqlCommandWHERE;
+            }
+            if (staffName !="")
+            {
+                sqlCommandWHERE = " tStaff.name LIKE '%" + staffName + "%'and " + sqlCommandWHERE;
+            }
+            if (staffSurname !="")
+            {
+                sqlCommandWHERE = " tStaff.surname LIKE '%" + staffSurname + "%'and " + sqlCommandWHERE;
+            }
+
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand((" SELECT " + sqlCommandSELECT )+( " FROM " + sqlCommandFROM )+( " WHERE " + sqlCommandWHERE));
                 sqlCommand.Connection = sqlConnection;
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                sqlDataAdapter.SelectCommand = sqlCommand;
-                sqlDataAdapter.Fill(dataSet);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                DataSet staffDataSet = new DataSet();
+                sqlDataAdapter.Fill(staffDataSet);
+                return staffDataSet;
+
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
                 throw;
             }
+            finally
+            {
+                closeConnection(sqlConnection);
+            }
 
-            return dataSet;
+            //return null;
         }
 
         //Alttakiler veritabanına bağlanmakiçin kısa yollar

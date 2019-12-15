@@ -19,7 +19,12 @@ namespace EducationAutomation
 
         private void ShowStaff_Load(object sender, EventArgs e)
         {
-            outputStaffList.DataSource = DAO.listStaff();
+            outputStaffList.DataSource = DAO.listStaff().Tables[0];
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            outputStaffList.DataSource = DAO.listStaff(inputID.Text, inputName.Text, inputSurname.Text).Tables[0];
         }
     }
 }

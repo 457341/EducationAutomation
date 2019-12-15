@@ -61,22 +61,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditStaff.cs">
+    <Compile Include="view\EditStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditStaff.Designer.cs">
+    <Compile Include="view\EditStaff.Designer.cs">
       <DependentUpon>EditStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="EducationDatebaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EducationDatebaseDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="view\AddStaff.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\AddStaff.Designer.cs">
-      <DependentUpon>AddStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="model\CourseInfo.cs" />
     <Compile Include="model\Course.cs" />
@@ -110,11 +104,8 @@
     <Compile Include="model\Task.cs" />
     <Compile Include="model\TaskCourse.cs" />
     <Compile Include="model\User.cs" />
-    <EmbeddedResource Include="EditStaff.resx">
+    <EmbeddedResource Include="view\EditStaff.resx">
       <DependentUpon>EditStaff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\AddStaff.resx">
-      <DependentUpon>AddStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>

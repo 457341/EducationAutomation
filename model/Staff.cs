@@ -9,12 +9,12 @@ namespace EducationAutomation
     class Staff
 	{
 		private string ID;
-		private int educationLevelID;
-		private int departmentID;
-		private int taskID;
+		private string educationLevel;
+		private string department;
+		private string task;
 		private string name;
 		private string surname;
-		private string date;
+		private DateTime date;
 
 		public string getID()
 		{
@@ -40,45 +40,45 @@ namespace EducationAutomation
 		{
 			this.surname = surname;
 		}
-		public string getDate()
+		public DateTime getDate()
 		{
 			return date;
 		}
-		public void setDate(string date)
+		public void setDate(DateTime date)
 		{
 			this.date = date;
 		}
-		public int getDepartmentID()
+		public string getDepartment()
 		{
-			return departmentID;
+			return department;
 		}
-		public void setDepartmentID(int departmentID)
+		public void setDepartment(string department)
 		{
-			this.departmentID = departmentID;
+			this.department = department;
 		}
-		public int getTaskID()
+		public string getTask()
 		{
-			return taskID;
+			return task;
 		}
-		public void setTaskID(int taskId)
+		public void setTask(string task)
 		{
-			this.taskID = taskId;
+			this.task = task;
 		}
-		public string getIdentificationId()
+		public string getIdentificationID()
 		{
 			return ID;
 		}
-		public void setIdentificationId(string ID)
+		public void setIdentificationID(string ID)
 		{
 			this.ID = ID;
 		}
-		public int getEducationLevelID()
+		public string getEducationLevel()
 		{
-			return this.educationLevelID;
+			return this.educationLevel;
 		}
-		public void setEducationLevelID(int educationLevelID)
+		public void setEducationLevel(string educationLevel)
 		{
-			this.educationLevelID = educationLevelID;
+			this.educationLevel = educationLevel;
 		}
 	}
 }

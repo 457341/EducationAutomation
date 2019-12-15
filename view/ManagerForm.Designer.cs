@@ -194,6 +194,7 @@
             this.btnEditStaff.TabIndex = 3;
             this.btnEditStaff.Text = "Edit Staff";
             this.btnEditStaff.UseVisualStyleBackColor = true;
+            this.btnEditStaff.Click += new System.EventHandler(this.btnEditStaff_Click);
             // 
             // btnShowStaff
             // 

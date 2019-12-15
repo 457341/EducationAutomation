@@ -42,8 +42,7 @@
             // 
             // outputStaffList
             // 
-            this.outputStaffList.AllowUserToAddRows = false;
-            this.outputStaffList.AllowUserToDeleteRows = false;
+            this.outputStaffList.AllowUserToOrderColumns = true;
             this.outputStaffList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outputStaffList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -51,7 +50,6 @@
             this.outputStaffList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.outputStaffList.Location = new System.Drawing.Point(12, 248);
             this.outputStaffList.Name = "outputStaffList";
-            this.outputStaffList.ReadOnly = true;
             this.outputStaffList.Size = new System.Drawing.Size(617, 315);
             this.outputStaffList.TabIndex = 0;
             // 

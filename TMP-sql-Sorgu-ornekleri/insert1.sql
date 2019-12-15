@@ -1,1 +1,1 @@
-﻿INSERT INTO tStaff(ID,name,surname) Values('44444444444','emre','ihtiyar') 
+﻿INSERT INTO tStaff (ID,name,surname,startDate) Values('44444444444','Emre','ihtiyar',null)

@@ -22,11 +22,13 @@ namespace EducationAutomation
         {
             if (!panelStaff.isOpen)
             {
+                specialPanel2.SetBounds(specialPanel2.Location.X, specialPanel2.Location.Y + 5, specialPanel2.Width, specialPanel2.Height);
                 panelStaff.open(this.timer1);
             }
             
             if(panelStaff.isOpen)
             {
+                specialPanel2.SetBounds(specialPanel2.Location.X, specialPanel2.Location.Y - 5, specialPanel2.Width, specialPanel2.Height);
                 panelStaff.close(this.timer1);
             }
         }
@@ -39,6 +41,13 @@ namespace EducationAutomation
             ShowStaff showStaff = new ShowStaff();
             showStaff.MdiParent = this;
             showStaff.Show();
+        }
+
+        private void btnEditStaff_Click(object sender, EventArgs e)
+        {
+            EditStaff editStaff = new EditStaff();
+            editStaff.MdiParent = this;
+            editStaff.Show();
         }
     }
 }

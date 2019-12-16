@@ -64,14 +64,6 @@ namespace EducationAutomation
 		{
 			this.task = task;
 		}
-		public string getIdentificationID()
-		{
-			return ID;
-		}
-		public void setIdentificationID(string ID)
-		{
-			this.ID = ID;
-		}
 		public string getEducationLevel()
 		{
 			return this.educationLevel;

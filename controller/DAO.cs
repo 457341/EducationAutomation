@@ -112,37 +112,9 @@ namespace EducationAutomation
                 tStaffSqlCommand.Parameters.AddWithValue("@surname", staff.getSurname());
                 //tStaffSqlCommand.Parameters.AddWithValue("@startDate", staff.getDate());
                 tStaffSqlCommand.ExecuteNonQuery();
-                
-                //Her özellik için o ozellik kendi tablosunda varsa sadece ilişki tablosuna ekler eğer tabloda yoksa hem ilişki hemde özellik tablosuna ekler
-                if (hasRows("tDepartments", staff.getDepartment()))
-                {
-                    addToRelationTable("tStaff_tDepartments","departmentID",staff.getDepartment(),staff.getID());
-                }
-                else
-                {
-                    addToPropertyTable("tDepartments",staff.getDepartment());
-                    addToRelationTable("tStaff_tDepartments", "departmentID", staff.getDepartment(), staff.getID());
-                }
 
-                if (hasRows("tTasks", staff.getTask()))
-                {
-                    addToRelationTable("tStaff_tTasks", "taskID", staff.getTask(), staff.getID());
-                }
-                else
-                {
-                    addToPropertyTable("tTasks", staff.getTask());
-                    addToRelationTable("tStaff_tTasks", "taskID", staff.getTask(), staff.getID());
-                }
-                /* Education level da hiç veri yokken okunamıyor hatası alıyorum 
-                if (hasRows("tEducationLevel", staff.getEducationLevel()))
-                {
-                    addToRelationTable("tStaff_tEducationLevel", "EducationLevelID", staff.getEducationLevel(), staff.getID());
-                }
-                else
-                {
-                    addToPropertyTable("tEducationLevel", staff.getDepartment());
-                    addToRelationTable("tStaff_tEducationLevel", "EducationLevelID", staff.getEducationLevel(), staff.getID());
-                }*/
+                //Her özellik için o ozellik kendi tablosunda varsa sadece ilişki tablosuna ekler eğer tabloda yoksa hem ilişki hemde özellik tablosuna ekler
+                controlAndAdd(staff);
 
 
             }
@@ -255,6 +227,38 @@ namespace EducationAutomation
             finally
             {
                 closeConnection(sqlConnection);
+            }
+        }
+
+        private static void controlAndAdd(Staff staff)
+        {
+            if (hasRows("tDepartments", staff.getDepartment()))
+            {
+                addToRelationTable("tStaff_tDepartments", "departmentID", staff.getDepartment(), staff.getID());
+            }
+            else
+            {
+                addToPropertyTable("tDepartments", staff.getDepartment());
+                addToRelationTable("tStaff_tDepartments", "departmentID", staff.getDepartment(), staff.getID());
+            }
+
+            if (hasRows("tTasks", staff.getTask()))
+            {
+                addToRelationTable("tStaff_tTasks", "taskID", staff.getTask(), staff.getID());
+            }
+            else
+            {
+                addToPropertyTable("tTasks", staff.getTask());
+                addToRelationTable("tStaff_tTasks", "taskID", staff.getTask(), staff.getID());
+            }
+            if (hasRows("tEducationLevel", staff.getEducationLevel()))
+            {
+                addToRelationTable("tStaff_tEducationLevel", "EducationLevelID", staff.getEducationLevel(), staff.getID());
+            }
+            else
+            {
+                addToPropertyTable("tEducationLevel", staff.getEducationLevel());
+                addToRelationTable("tStaff_tEducationLevel", "EducationLevelID", staff.getEducationLevel(), staff.getID());
             }
         }
 

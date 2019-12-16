@@ -17,14 +17,54 @@ namespace EducationAutomation
         {
             InitializeComponent();
         }
-
         private void EditStaff_Load(object sender, EventArgs e)
         {
             outputStaffList.DataSource = DAO.listStaff().Tables[0];
         }
+        //private static void UpdateGridView() => outputStaffList.DataSource = DAO.listStaff().Tables[0];
 
+        private void outputStaffList_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            inputID.Text = outputStaffList.CurrentRow.Cells[0].Value.ToString();
+            inputName.Text = outputStaffList.CurrentRow.Cells[1].Value.ToString();
+            inputSurname.Text = outputStaffList.CurrentRow.Cells[2].Value.ToString();
+            textInputDepartment.Text = outputStaffList.CurrentRow.Cells[4].Value.ToString();
+            textInputTask.Text = outputStaffList.CurrentRow.Cells[5].Value.ToString();
+            textInputEducation.Text = outputStaffList.CurrentRow.Cells[6].Value.ToString();
+            dateTimePicker1.Text = outputStaffList.CurrentRow.Cells[3].Value.ToString();
+        }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Staff staff = new Staff();
+            if (inputID.Text.Length != 11)
+            {
+                MessageBox.Show("TC Kimlik Numarası 11 karakter uzunluğunda olmak zorundadır.");
+            }
+            else
+            {
+                staff.setID(inputID.Text);
+                staff.setName(inputName.Text);
+                staff.setSurname(inputSurname.Text);
+                staff.setTask(textInputTask.Text);
+                staff.setDepartment(textInputDepartment.Text);
+                staff.setEducationLevel(textInputEducation.Text);
+                staff.setDate(dateTimePicker1.Value);
+                DAO.addStaff(staff);
+            }
+            outputStaffList.DataSource = DAO.listStaff().Tables[0];
+        }
 
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            inputID.Text = "";
+            inputName.Text = "";
+            inputSurname.Text = "";
+            textInputDepartment.Text = "";
+            textInputEducation.Text = "";
+            textInputTask.Text = "";
+            
+        }
         //CheckBox işlemleri
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -41,22 +81,10 @@ namespace EducationAutomation
                 check1 = false;
             }
         }
-
-        private void outputStaffList_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            inputID.Text = outputStaffList.CurrentRow.Cells[0].Value.ToString();
-            inputName.Text = outputStaffList.CurrentRow.Cells[1].Value.ToString();
-            inputSurname.Text = outputStaffList.CurrentRow.Cells[2].Value.ToString();
-            textInputDepartment.Text = outputStaffList.CurrentRow.Cells[4].Value.ToString();
-            textInputTask.Text = outputStaffList.CurrentRow.Cells[5].Value.ToString();
-            textInputEducation.Text = outputStaffList.CurrentRow.Cells[6].Value.ToString();
-            dateTimePicker1.Text = outputStaffList.CurrentRow.Cells[3].Value.ToString();
-        }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (!check2)
-            { 
+            {
                 comboBoxTask.Visible = false;
                 textInputTask.Visible = true;
                 check2 = true;
@@ -68,19 +96,6 @@ namespace EducationAutomation
                 textInputTask.Visible = false;
                 check2 = false;
             }
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            Staff staff = new Staff();
-            staff.setID("12345678904");
-            staff.setName("Mahmut");
-            staff.setSurname("Ekşi");
-            staff.setTask("Mudur");
-            staff.setDepartment("Yeni departman");
-            staff.setEducationLevel("Lise Terk");
-            staff.setDate(DateTime.Now);
-            DAO.addStaff(staff);
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)

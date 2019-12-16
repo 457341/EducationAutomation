@@ -31,7 +31,15 @@ namespace EducationAutomation
                     sqlCommand.Parameters.AddWithValue("@ID", user.getIdNo());
                     sqlDataReader = sqlCommand.ExecuteReader();
                     sqlDataReader.Read();
-                    result = sqlDataReader.GetString(0);
+                    if (sqlDataReader.HasRows)
+                    {
+                        result = sqlDataReader.GetString(0);
+                    }
+                    else
+                    {
+                        result = "error";
+                    }
+
                     return result;
                 }
                 else
@@ -106,7 +114,7 @@ namespace EducationAutomation
             SqlConnection sqlConnection = openConnection();
             try
             {
-                SqlCommand tStaffSqlCommand = new SqlCommand("INSERT INTO tStaff (ID,name,surname,startDate) Values(@ID,@name,@surname,@startDate)", sqlConnection); //Datetime eklenecek
+                SqlCommand tStaffSqlCommand = new SqlCommand("INSERT INTO tStaff (ID,name,surname,startDate) Values(@ID,LOWER( @name ),LOWER( @surname ),@startDate)", sqlConnection); //Datetime eklenecek
                 tStaffSqlCommand.Parameters.AddWithValue("@ID", staff.getID());
                 tStaffSqlCommand.Parameters.AddWithValue("@name", staff.getName());
                 tStaffSqlCommand.Parameters.AddWithValue("@surname", staff.getSurname());
@@ -133,21 +141,26 @@ namespace EducationAutomation
         public static void deleteStaff(Staff staff)
         {
             SqlConnection sqlConnection = openConnection();
-
+            SqlCommand deleteToRelationSqlCommand = null;
             try
             {
-                SqlCommand deleteToRelationSqlCommand = new SqlCommand("DELETE FROM tStaff_tDepartments WHERE tStaff_tDepartments.ID = @ID ;" +
-                                                                        "DELETE FROM tStaff_tEducationLevel WHERE tStaff_tEducationLevel.ID = @ID ;" +
-                                                                        "DELETE FROM tStaff_tTasks WHERE tStaff_tTasks.ID = @ID ;",sqlConnection);
+                deleteToRelationSqlCommand = new SqlCommand("DELETE FROM tStaff_tDepartments WHERE tStaff_tDepartments.ID = @ID and 1 != (SELECT tStaff_tTasks.taskID FROM tStaff_tTasks WHERE ID = @ID ) ;" +
+                                                            "DELETE FROM tStaff_tEducationLevel WHERE tStaff_tEducationLevel.ID = @ID and 1 != (SELECT tStaff_tTasks.taskID FROM tStaff_tTasks WHERE ID = @ID ) ;" +
+                                                            "DELETE FROM tStaff_tTasks WHERE tStaff_tTasks.ID = @ID and 1 != (SELECT tStaff_tTasks.taskID FROM tStaff_tTasks WHERE ID = @ID ) ;", sqlConnection);
                 deleteToRelationSqlCommand.Parameters.AddWithValue("@ID",staff.getID());
-                deleteToRelationSqlCommand.ExecuteNonQuery();
-
-                SqlCommand deleteToStaffTableSqlCommand = new SqlCommand("DELETE FROM tStaff WHERE tStaff.ID = @ID ",sqlConnection);
-                deleteToStaffTableSqlCommand.Parameters.AddWithValue("@ID", staff.getID());
-                deleteToStaffTableSqlCommand.ExecuteNonQuery();
-            }
+                if (deleteToRelationSqlCommand.ExecuteNonQuery() > 0)
+                {
+                    SqlCommand deleteToStaffTableSqlCommand = new SqlCommand("DELETE FROM tStaff WHERE tStaff.ID = @ID ", sqlConnection);
+                    deleteToStaffTableSqlCommand.Parameters.AddWithValue("@ID", staff.getID());
+                    deleteToStaffTableSqlCommand.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("En Yüksek Görevliyi Silemezsiniz.");                }               
+                }
             catch (Exception exception)
             {
+                deleteToRelationSqlCommand.Cancel();
                 MessageBox.Show(exception.Message);
                 Application.Exit();
                 throw;
@@ -165,7 +178,7 @@ namespace EducationAutomation
             SqlConnection sqlConnection = openConnection();
             try
             {
-                SqlCommand sqlCommand = new SqlCommand("SELECT " + tableName + ".name FROM " + tableName + " WHERE "+tableName+".name = @word", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT " + tableName + ".name FROM " + tableName + " WHERE "+tableName+".name = LOWER( @word ) " , sqlConnection);
                 //sqlCommand.Parameters.AddWithValue("@tableName", tableName);
                 //sqlCommand.Parameters.AddWithValue("@collumName", collumName);
                 sqlCommand.Parameters.AddWithValue("@word", word);
@@ -221,7 +234,7 @@ namespace EducationAutomation
             try
             {
                 string[] tmp = relationTableName.Split('_');
-                SqlCommand sqlCommand = new SqlCommand("INSERT INTO " + relationTableName + " (ID," + collumName + ") Values(@ID,@propertyID)", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("INSERT INTO " + relationTableName + " (ID," + collumName + ") Values(@ID,LOWER( @propertyID ))", sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@ID", ID);
                 sqlCommand.Parameters.AddWithValue("@propertyID", getPropertyID(tmp[1], collumName, name));
                 sqlCommand.ExecuteNonQuery();
@@ -243,7 +256,7 @@ namespace EducationAutomation
             SqlConnection sqlConnection = openConnection();
             try
             {
-                SqlCommand sqlCommand = new SqlCommand("INSERT INTO " + tableName + " (name) Values(@name)", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("INSERT INTO " + tableName + " (name) Values( LOWER( @name ))", sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@name", name);
                 sqlCommand.ExecuteNonQuery();
             }

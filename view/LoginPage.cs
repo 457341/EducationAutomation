@@ -20,7 +20,7 @@ namespace EducationAutomation
 
         private void LoginPage_Load(object sender, EventArgs e)
         {
-            outputResult.Visible = false;
+            
         }
 
         private void login_Click(object sender, EventArgs e)
@@ -32,14 +32,18 @@ namespace EducationAutomation
             user.setPassword("abcd");
             string result = DAO.login(user);
 
-            if (result == "Mudur")
+            if (result == "mudur" || result == "ceo")
             {
                 ManagerForm managerForm = new ManagerForm();
                 managerForm.Show();
             }
-            else if (result == "Mudur Yardımcısı")
+            else if (result == "mudur yardımcısı")
             {
 
+            }
+            else if (result == "error")
+            {
+                outputResult.Text = "Hatalı Giriş Yaptınız Lütfen Tekrar Deneyiniz";
             }
 
         }

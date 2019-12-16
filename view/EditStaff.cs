@@ -41,6 +41,10 @@ namespace EducationAutomation
             {
                 MessageBox.Show("TC Kimlik Numarası 11 karakter uzunluğunda olmak zorundadır.");
             }
+            else if (textInputEducation.Text == "" || textInputDepartment.Text== "" || textInputTask.Text == "")
+            {
+                MessageBox.Show("Departman, Eğitim Seviyesi ve Görevi Boş Bırakmayınız. ");
+            }
             else
             {
                 staff.setID(inputID.Text);
@@ -96,6 +100,21 @@ namespace EducationAutomation
                 textInputEducation.Visible = false;
                 check2 = false;
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Staff staff = new Staff();
+            if (inputID.Text.Length != 11)
+            {
+                MessageBox.Show("TC Kimlik Numarası 11 karakter uzunluğunda olmak zorundadır.");
+            }
+            else
+            {
+                staff.setID(inputID.Text);
+                DAO.deleteStaff(staff);
+            }
+            outputStaffList.DataSource = DAO.listStaff().Tables[0];
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)

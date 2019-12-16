@@ -130,6 +130,35 @@ namespace EducationAutomation
             }
         }
 
+        public static void deleteStaff(Staff staff)
+        {
+            SqlConnection sqlConnection = openConnection();
+
+            try
+            {
+                SqlCommand deleteToRelationSqlCommand = new SqlCommand("DELETE FROM tStaff_tDepartments WHERE tStaff_tDepartments.ID = @ID ;" +
+                                                                        "DELETE FROM tStaff_tEducationLevel WHERE tStaff_tEducationLevel.ID = @ID ;" +
+                                                                        "DELETE FROM tStaff_tTasks WHERE tStaff_tTasks.ID = @ID ;",sqlConnection);
+                deleteToRelationSqlCommand.Parameters.AddWithValue("@ID",staff.getID());
+                deleteToRelationSqlCommand.ExecuteNonQuery();
+
+                SqlCommand deleteToStaffTableSqlCommand = new SqlCommand("DELETE FROM tStaff WHERE tStaff.ID = @ID ",sqlConnection);
+                deleteToStaffTableSqlCommand.Parameters.AddWithValue("@ID", staff.getID());
+                deleteToStaffTableSqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                Application.Exit();
+                throw;
+            }
+            finally
+            {
+                closeConnection(sqlConnection);
+            }
+        }
+
+        //Alttaki 5 tanesi Ekleme işlemi için Yazdığım yardımcı fonksiyonlar --Emre ihtiyar
         private static bool hasRows(string tableName, string word)
         {
             bool result = false;
@@ -262,7 +291,7 @@ namespace EducationAutomation
             }
         }
 
-        //Alttakiler veritabanına bağlanmakiçin kısa yollar
+        //Alttakiler veritabanına bağlanmakiçin kısa yollar  -Emre ihtiyar
         private static SqlConnection openConnection()
         {
             SqlConnection sqlConnection = null;

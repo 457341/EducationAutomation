@@ -106,11 +106,11 @@ namespace EducationAutomation
             SqlConnection sqlConnection = openConnection();
             try
             {
-                SqlCommand tStaffSqlCommand = new SqlCommand("INSERT INTO tStaff (ID,name,surname) Values(@ID,@name,@surname)", sqlConnection); //Datetime eklenecek
+                SqlCommand tStaffSqlCommand = new SqlCommand("INSERT INTO tStaff (ID,name,surname,startDate) Values(@ID,@name,@surname,@startDate)", sqlConnection); //Datetime eklenecek
                 tStaffSqlCommand.Parameters.AddWithValue("@ID", staff.getID());
                 tStaffSqlCommand.Parameters.AddWithValue("@name", staff.getName());
                 tStaffSqlCommand.Parameters.AddWithValue("@surname", staff.getSurname());
-                //tStaffSqlCommand.Parameters.AddWithValue("@startDate", staff.getDate());
+                tStaffSqlCommand.Parameters.AddWithValue("@startDate", staff.getDate());
                 tStaffSqlCommand.ExecuteNonQuery();
 
                 //Her özellik için o ozellik kendi tablosunda varsa sadece ilişki tablosuna ekler eğer tabloda yoksa hem ilişki hemde özellik tablosuna ekler

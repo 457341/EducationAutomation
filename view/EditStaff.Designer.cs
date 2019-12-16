@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.Label();
             this.btnGroup = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textInputTask = new System.Windows.Forms.TextBox();
-            this.textInputEducation = new System.Windows.Forms.TextBox();
             this.textInputDepartment = new System.Windows.Forms.TextBox();
             this.inputSurname = new System.Windows.Forms.TextBox();
             this.inputName = new System.Windows.Forms.TextBox();
@@ -56,8 +56,8 @@
             this.comboBoxTask = new System.Windows.Forms.ComboBox();
             this.comboBoxDepartment = new System.Windows.Forms.ComboBox();
             this.comboBoxEducation = new System.Windows.Forms.ComboBox();
+            this.textInputEducation = new System.Windows.Forms.TextBox();
             this.outputStaffList = new System.Windows.Forms.DataGridView();
-            this.btnReset = new System.Windows.Forms.Button();
             this.infoGroup.SuspendLayout();
             this.btnGroup.SuspendLayout();
             this.inputGroup.SuspendLayout();
@@ -122,6 +122,13 @@
             this.btnGroup.Name = "btnGroup";
             this.btnGroup.TabStop = false;
             // 
+            // btnReset
+            // 
+            resources.ApplyResources(this.btnReset, "btnReset");
+            this.btnReset.Name = "btnReset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // btnUpdate
             // 
             resources.ApplyResources(this.btnUpdate, "btnUpdate");
@@ -147,9 +154,9 @@
             this.inputGroup.Controls.Add(this.checkBox3);
             this.inputGroup.Controls.Add(this.checkBox2);
             this.inputGroup.Controls.Add(this.checkBox1);
+            this.inputGroup.Controls.Add(this.textInputEducation);
             this.inputGroup.Controls.Add(this.dateTimePicker1);
             this.inputGroup.Controls.Add(this.textInputTask);
-            this.inputGroup.Controls.Add(this.textInputEducation);
             this.inputGroup.Controls.Add(this.textInputDepartment);
             this.inputGroup.Controls.Add(this.inputSurname);
             this.inputGroup.Controls.Add(this.inputName);
@@ -199,11 +206,6 @@
             resources.ApplyResources(this.textInputTask, "textInputTask");
             this.textInputTask.Name = "textInputTask";
             // 
-            // textInputEducation
-            // 
-            resources.ApplyResources(this.textInputEducation, "textInputEducation");
-            this.textInputEducation.Name = "textInputEducation";
-            // 
             // textInputDepartment
             // 
             resources.ApplyResources(this.textInputDepartment, "textInputDepartment");
@@ -242,23 +244,24 @@
             this.comboBoxEducation.FormattingEnabled = true;
             this.comboBoxEducation.Name = "comboBoxEducation";
             // 
+            // textInputEducation
+            // 
+            resources.ApplyResources(this.textInputEducation, "textInputEducation");
+            this.textInputEducation.Name = "textInputEducation";
+            // 
             // outputStaffList
             // 
+            this.outputStaffList.AllowUserToAddRows = false;
+            this.outputStaffList.AllowUserToDeleteRows = false;
             this.outputStaffList.AllowUserToOrderColumns = true;
             resources.ApplyResources(this.outputStaffList, "outputStaffList");
             this.outputStaffList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.outputStaffList.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.outputStaffList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.outputStaffList.Name = "outputStaffList";
+            this.outputStaffList.ReadOnly = true;
             this.outputStaffList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.outputStaffList.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.outputStaffList_CellEnter);
-            // 
-            // btnReset
-            // 
-            resources.ApplyResources(this.btnReset, "btnReset");
-            this.btnReset.Name = "btnReset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // EditStaff
             // 
@@ -292,8 +295,8 @@
         private System.Windows.Forms.GroupBox btnGroup;
         private System.Windows.Forms.GroupBox inputGroup;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textInputTask;
         private System.Windows.Forms.TextBox textInputEducation;
+        private System.Windows.Forms.TextBox textInputTask;
         private System.Windows.Forms.TextBox textInputDepartment;
         private System.Windows.Forms.TextBox inputSurname;
         private System.Windows.Forms.TextBox inputName;

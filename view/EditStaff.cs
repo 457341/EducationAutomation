@@ -29,8 +29,8 @@ namespace EducationAutomation
             inputName.Text = outputStaffList.CurrentRow.Cells[1].Value.ToString();
             inputSurname.Text = outputStaffList.CurrentRow.Cells[2].Value.ToString();
             textInputDepartment.Text = outputStaffList.CurrentRow.Cells[4].Value.ToString();
-            textInputTask.Text = outputStaffList.CurrentRow.Cells[5].Value.ToString();
-            textInputEducation.Text = outputStaffList.CurrentRow.Cells[6].Value.ToString();
+            textInputEducation.Text = outputStaffList.CurrentRow.Cells[5].Value.ToString();
+            textInputTask.Text = outputStaffList.CurrentRow.Cells[6].Value.ToString();
             dateTimePicker1.Text = outputStaffList.CurrentRow.Cells[3].Value.ToString();
         }
 
@@ -46,9 +46,9 @@ namespace EducationAutomation
                 staff.setID(inputID.Text);
                 staff.setName(inputName.Text);
                 staff.setSurname(inputSurname.Text);
-                staff.setTask(textInputTask.Text);
+                staff.setTask(textInputEducation.Text);
                 staff.setDepartment(textInputDepartment.Text);
-                staff.setEducationLevel(textInputEducation.Text);
+                staff.setEducationLevel(textInputTask.Text);
                 staff.setDate(dateTimePicker1.Value);
                 DAO.addStaff(staff);
             }
@@ -61,8 +61,8 @@ namespace EducationAutomation
             inputName.Text = "";
             inputSurname.Text = "";
             textInputDepartment.Text = "";
-            textInputEducation.Text = "";
             textInputTask.Text = "";
+            textInputEducation.Text = "";
             
         }
         //CheckBox işlemleri
@@ -86,14 +86,14 @@ namespace EducationAutomation
             if (!check2)
             {
                 comboBoxTask.Visible = false;
-                textInputTask.Visible = true;
+                textInputEducation.Visible = true;
                 check2 = true;
             }
             else
             {
 
                 comboBoxTask.Visible = true;
-                textInputTask.Visible = false;
+                textInputEducation.Visible = false;
                 check2 = false;
             }
         }
@@ -103,14 +103,14 @@ namespace EducationAutomation
             if (!check3)
             {
                 comboBoxEducation.Visible = false;
-                textInputEducation.Visible = true;
+                textInputTask.Visible = true;
                 check3 = true;
             }
             else
             {
 
                 comboBoxEducation.Visible = true;
-                textInputEducation.Visible = false;
+                textInputTask.Visible = false;
                 check3 = false;
             }
         }

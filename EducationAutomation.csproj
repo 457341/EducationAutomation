@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -61,56 +61,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="view\EditStaff.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\EditStaff.Designer.cs">
-      <DependentUpon>EditStaff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EducationDatebaseDataSet.Designer.cs">
+    <Compile Include="EgitimVeriTabaniDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EducationDatebaseDataSet.xsd</DependentUpon>
+      <DependentUpon>EgitimVeriTabaniDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="model\CourseInfo.cs" />
-    <Compile Include="model\Course.cs" />
-    <Compile Include="controller\DAO.cs" />
-    <Compile Include="model\Department.cs" />
-    <Compile Include="model\Enrolled.cs" />
-    <Compile Include="view\LoginPage.cs">
+    <Compile Include="Modeller\Egitim.cs" />
+    <Compile Include="Formlar\EditStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\LoginPage.Designer.cs">
+    <Compile Include="Formlar\EditStaff.Designer.cs">
+      <DependentUpon>EditStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modeller\KursTanim.cs" />
+    <Compile Include="Kontroller\DAO.cs" />
+    <Compile Include="Modeller\Bolum.cs" />
+    <Compile Include="Formlar\LoginPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\ManagerForm.cs">
+    <Compile Include="Formlar\ManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\ManagerForm.Designer.cs">
+    <Compile Include="Formlar\ManagerForm.Designer.cs">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\Program.cs" />
+    <Compile Include="Modeller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="view\ShowStaff.cs">
+    <Compile Include="Formlar\ShowStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\ShowStaff.Designer.cs">
+    <Compile Include="Formlar\ShowStaff.Designer.cs">
       <DependentUpon>ShowStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\SpecialPanel.cs">
+    <Compile Include="Formlar\SpecialPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="model\Staff.cs" />
-    <Compile Include="model\Task.cs" />
-    <Compile Include="model\TaskCourse.cs" />
-    <Compile Include="model\User.cs" />
-    <EmbeddedResource Include="view\EditStaff.resx">
+    <Compile Include="Modeller\Personel.cs" />
+    <Compile Include="Modeller\Gorev.cs" />
+    <Compile Include="Modeller\Kullanici.cs" />
+    <EmbeddedResource Include="Formlar\EditStaff.resx">
       <DependentUpon>EditStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\LoginPage.resx">
+    <EmbeddedResource Include="Formlar\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\ManagerForm.resx">
+    <EmbeddedResource Include="Formlar\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -122,19 +120,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="view\ShowStaff.resx">
+    <EmbeddedResource Include="Formlar\ShowStaff.resx">
       <DependentUpon>ShowStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="EducationDatebaseDataSet.xsc">
-      <DependentUpon>EducationDatebaseDataSet.xsd</DependentUpon>
+    <None Include="EgitimVeriTabaniDataSet.xsc">
+      <DependentUpon>EgitimVeriTabaniDataSet.xsd</DependentUpon>
     </None>
-    <None Include="EducationDatebaseDataSet.xsd">
+    <None Include="EgitimVeriTabaniDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EducationDatebaseDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>EgitimVeriTabaniDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="EducationDatebaseDataSet.xss">
-      <DependentUpon>EducationDatebaseDataSet.xsd</DependentUpon>
+    <None Include="EgitimVeriTabaniDataSet.xss">
+      <DependentUpon>EgitimVeriTabaniDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -150,15 +148,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EducationDatebase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="EducationDatebase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>EducationDatebase.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 ve x64%29</ProductName>
@@ -170,6 +159,14 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="EgitimVeriTabani.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EgitimVeriTabani_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>EgitimVeriTabani.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
